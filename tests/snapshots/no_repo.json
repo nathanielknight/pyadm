@@ -1,0 +1,124 @@
+{
+  "files": {
+    ".config": "<dir>",
+    ".config/<prog>": "<dir>",
+    ".local": "<dir>",
+    ".local/share": "<dir>",
+    ".local/share/<prog>": "<dir>"
+  },
+  "git": {},
+  "private_dir_modes": {},
+  "steps": [
+    {
+      "args": [
+        "run",
+        "status"
+      ],
+      "returncode": 1,
+      "stderr": "ERROR: Git repo does not exist. did you forget to run 'init' or 'clone'?\n",
+      "stdout": ""
+    },
+    {
+      "args": [
+        "run",
+        "list"
+      ],
+      "returncode": 1,
+      "stderr": "ERROR: Git repo does not exist. did you forget to run 'init' or 'clone'?\n",
+      "stdout": ""
+    },
+    {
+      "args": [
+        "run",
+        "add",
+        "foo"
+      ],
+      "returncode": 1,
+      "stderr": "ERROR: Git repo does not exist. did you forget to run 'init' or 'clone'?\n",
+      "stdout": ""
+    },
+    {
+      "args": [
+        "run",
+        "gitconfig",
+        "core.bare"
+      ],
+      "returncode": 1,
+      "stderr": "ERROR: Git repo does not exist. did you forget to run 'init' or 'clone'?\n",
+      "stdout": ""
+    },
+    {
+      "args": [
+        "run",
+        "clean"
+      ],
+      "returncode": 1,
+      "stderr": "ERROR: \"git clean\" has been disabled for safety. You could end up removing all unmanaged files.\n",
+      "stdout": ""
+    },
+    {
+      "args": [
+        "run",
+        "introspect",
+        "repo"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "<TMP>/home/.local/share/<prog>/repo.git\n"
+    },
+    {
+      "args": [
+        "run",
+        "introspect",
+        "switches"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "--<prog>-archive\n--<prog>-bootstrap\n--<prog>-config\n--<prog>-data\n--<prog>-dir\n--<prog>-encrypt\n--<prog>-repo\n-Y"
+    },
+    {
+      "args": [
+        "run",
+        "introspect",
+        "bogus"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "args": [
+        "rc"
+      ],
+      "returncode": 1
+    },
+    {
+      "args": [
+        "rc",
+        "help"
+      ],
+      "returncode": 1
+    },
+    {
+      "args": [
+        "rc",
+        "--help"
+      ],
+      "returncode": 1
+    },
+    {
+      "args": [
+        "rc",
+        "version"
+      ],
+      "returncode": 0
+    },
+    {
+      "args": [
+        "rc",
+        "--version"
+      ],
+      "returncode": 0
+    }
+  ]
+}

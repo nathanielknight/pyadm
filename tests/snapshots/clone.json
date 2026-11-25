@@ -1,0 +1,96 @@
+{
+  "files": {
+    ".config": "<dir>",
+    ".config/<prog>": "<dir>",
+    ".config/app": "<dir>",
+    ".config/app/settings.ini": "[app]\ncolor = blue\n",
+    ".gnupg": "<dir>",
+    ".local": "<dir>",
+    ".local/share": "<dir>",
+    ".local/share/<prog>": "<dir>",
+    ".local/share/<prog>/repo.git": "<dir>",
+    ".ssh": "<dir>",
+    ".vimrc": "set nonumber\n"
+  },
+  "git": {
+    "core.bare": "false",
+    "core.worktree": "<TMP>/home",
+    "head": "ffb5b448eb49f2ceef0b8a35330628e2a80b670c",
+    "status": [
+      " M .vimrc"
+    ],
+    "status.showUntrackedFiles": "no",
+    "tracked": [
+      ".config/app/settings.ini",
+      ".vimrc"
+    ],
+    "yadm.managed": "true"
+  },
+  "private_dir_modes": {
+    ".gnupg": "0o700",
+    ".ssh": "0o700"
+  },
+  "steps": [
+    {
+      "args": [
+        "run",
+        "clone",
+        "{tmp}/remote.git"
+      ],
+      "returncode": 0,
+      "stderr": "Cloning into 'repo.git'...\ndone.\n",
+      "stdout": ""
+    },
+    {
+      "args": [
+        "run",
+        "list"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": ".config/app/settings.ini\n.vimrc\n"
+    },
+    {
+      "args": [
+        "run",
+        "status",
+        "--short",
+        "--branch"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "## main...origin/main\n"
+    },
+    {
+      "args": [
+        "run",
+        "clone",
+        "{tmp}/remote.git"
+      ],
+      "returncode": 1,
+      "stderr": "ERROR: Git repo already exists. [<TMP>/home/.local/share/<prog>/repo.git]\nUse '-f' if you want to force it to be overwritten.\n",
+      "stdout": ""
+    },
+    {
+      "args": [
+        "run",
+        "clone",
+        "-f",
+        "{tmp}/remote.git"
+      ],
+      "returncode": 0,
+      "stderr": "Cloning into 'repo.git'...\ndone.\n",
+      "stdout": "**NOTE**\n  Local files with content that differs from the ones just\n  cloned were found in <TMP>/home. They have been left\n  unmodified.\n\n  Please review and resolve any differences appropriately.\n  If you know what you're doing, and want to overwrite the\n  tracked files, consider '<prog> checkout \"<TMP>/home\"'.\n\n"
+    },
+    {
+      "args": [
+        "run",
+        "status",
+        "--short"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": " M .vimrc\n"
+    }
+  ]
+}

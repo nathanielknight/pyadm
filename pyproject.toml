@@ -1,0 +1,25 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pyadm"
+dynamic = ["version"]
+description = "A cross-platform Python clone of yadm (Yet Another Dotfiles Manager)"
+readme = "README.md"
+license = "GPL-3.0-or-later"
+license-files = ["LICENSE"]
+requires-python = ">=3.9"
+dependencies = []
+
+[project.scripts]
+pyadm = "pyadm.cli:main"
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[tool.hatch.version]
+path = "src/pyadm/__init__.py"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,156 @@
+{
+  "files": {
+    ".config": "<dir>",
+    ".config/<prog>": "<dir>",
+    ".config/<prog>/config": "[<prog>]\n\tauto-private-dirs = false\n",
+    ".local": "<dir>",
+    ".local/share": "<dir>",
+    ".local/share/<prog>": "<dir>",
+    ".local/share/<prog>/repo.git": "<dir>"
+  },
+  "git": {
+    "core.bare": "false",
+    "core.worktree": "<TMP>/home",
+    "head": "",
+    "status": [],
+    "status.showUntrackedFiles": "no",
+    "tracked": [],
+    "yadm.managed": "true"
+  },
+  "private_dir_modes": {},
+  "steps": [
+    {
+      "args": [
+        "run",
+        "config",
+        "yadm.auto-private-dirs",
+        "false"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "args": [
+        "run",
+        "config",
+        "yadm.auto-private-dirs"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "false\n"
+    },
+    {
+      "args": [
+        "run",
+        "config",
+        "--bool",
+        "yadm.auto-private-dirs"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "false\n"
+    },
+    {
+      "args": [
+        "run",
+        "config",
+        "missing.key"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "args": [
+        "run",
+        "config",
+        "local.class",
+        "work"
+      ],
+      "returncode": 1,
+      "stderr": "ERROR: Git repo does not exist. did you forget to run 'init' or 'clone'?\n",
+      "stdout": ""
+    },
+    {
+      "args": [
+        "run",
+        "init"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "Initialized empty shared Git repository in <TMP>/home/.local/share/<prog>/repo.git/\n"
+    },
+    {
+      "args": [
+        "run",
+        "config",
+        "local.class",
+        "work"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "args": [
+        "run",
+        "config",
+        "local.class"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "work\n"
+    },
+    {
+      "args": [
+        "run",
+        "gitconfig",
+        "local.class"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "work\n"
+    },
+    {
+      "args": [
+        "run",
+        "gitconfig",
+        "core.bare"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "false\n"
+    },
+    {
+      "args": [
+        "run",
+        "gitconfig",
+        "missing.key"
+      ],
+      "returncode": 1,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "args": [
+        "run",
+        "config",
+        "-l"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "<prog>.auto-private-dirs=false\n"
+    },
+    {
+      "args": [
+        "run",
+        "status",
+        "--short"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": ""
+    }
+  ]
+}

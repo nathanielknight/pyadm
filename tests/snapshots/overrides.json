@@ -1,0 +1,125 @@
+{
+  "files": {
+    ".config": "<dir>",
+    ".config/<prog>": "<dir>",
+    ".gnupg": "<dir>",
+    ".local": "<dir>",
+    ".local/share": "<dir>",
+    ".local/share/<prog>": "<dir>",
+    ".profile": "umask 022\n",
+    ".ssh": "<dir>"
+  },
+  "git": {
+    "core.bare": "false",
+    "core.worktree": "<TMP>/home",
+    "head": "c8d88dc48fe49dce0d93cca768336de0fd21de62",
+    "status": [],
+    "status.showUntrackedFiles": "no",
+    "tracked": [
+      ".profile"
+    ],
+    "yadm.managed": "true"
+  },
+  "private_dir_modes": {
+    ".gnupg": "0o700",
+    ".ssh": "0o700"
+  },
+  "steps": [
+    {
+      "args": [
+        "run",
+        "-Y",
+        "{tmp}/custom/dir",
+        "--yadm-repo",
+        "{tmp}/custom/repo",
+        "init"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "Initialized empty shared Git repository in <TMP>/custom/repo/\n"
+    },
+    {
+      "args": [
+        "run",
+        "status"
+      ],
+      "returncode": 1,
+      "stderr": "ERROR: Git repo does not exist. did you forget to run 'init' or 'clone'?\n",
+      "stdout": ""
+    },
+    {
+      "args": [
+        "run",
+        "--yadm-repo",
+        "{tmp}/custom/repo",
+        "add",
+        ".profile"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "args": [
+        "run",
+        "commit",
+        "--yadm-repo",
+        "{tmp}/custom/repo",
+        "-m",
+        "anywhere"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "[main (root-commit) c8d88dc] anywhere\n 1 file changed, 1 insertion(+)\n create mode 100644 .profile\n"
+    },
+    {
+      "args": [
+        "run",
+        "--yadm-repo",
+        "{tmp}/custom/repo",
+        "introspect",
+        "repo"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "<TMP>/custom/repo\n"
+    },
+    {
+      "args": [
+        "run",
+        "--yadm-data",
+        "{tmp}/custom/data",
+        "introspect",
+        "repo"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "<TMP>/custom/data/repo.git\n"
+    },
+    {
+      "args": [
+        "run",
+        "--yadm-config",
+        "{tmp}/custom/cfg",
+        "config",
+        "a.b",
+        "c"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "args": [
+        "inspect",
+        "config",
+        "--file",
+        "{tmp}/custom/cfg",
+        "a.b"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "c\n"
+    }
+  ]
+}

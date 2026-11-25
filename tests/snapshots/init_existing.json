@@ -1,0 +1,84 @@
+{
+  "files": {
+    ".bashrc": "export EDITOR=vim\n",
+    ".config": "<dir>",
+    ".config/<prog>": "<dir>",
+    ".gnupg": "<dir>",
+    ".local": "<dir>",
+    ".local/share": "<dir>",
+    ".local/share/<prog>": "<dir>",
+    ".local/share/<prog>/repo.git": "<dir>",
+    ".ssh": "<dir>"
+  },
+  "git": {
+    "core.bare": "false",
+    "core.worktree": "<TMP>/home",
+    "head": "",
+    "status": [],
+    "status.showUntrackedFiles": "no",
+    "tracked": [],
+    "yadm.managed": "true"
+  },
+  "private_dir_modes": {
+    ".gnupg": "0o700",
+    ".ssh": "0o700"
+  },
+  "steps": [
+    {
+      "args": [
+        "run",
+        "init"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "Initialized empty shared Git repository in <TMP>/home/.local/share/<prog>/repo.git/\n"
+    },
+    {
+      "args": [
+        "run",
+        "add",
+        ".bashrc"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "args": [
+        "run",
+        "init"
+      ],
+      "returncode": 1,
+      "stderr": "ERROR: Git repo already exists. [<TMP>/home/.local/share/<prog>/repo.git]\nUse '-f' if you want to force it to be overwritten.\n",
+      "stdout": ""
+    },
+    {
+      "args": [
+        "run",
+        "list"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": ".bashrc\n"
+    },
+    {
+      "args": [
+        "run",
+        "init",
+        "-f"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "Initialized empty shared Git repository in <TMP>/home/.local/share/<prog>/repo.git/\n"
+    },
+    {
+      "args": [
+        "run",
+        "list"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": ""
+    }
+  ]
+}

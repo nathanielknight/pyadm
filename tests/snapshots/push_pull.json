@@ -1,0 +1,118 @@
+{
+  "files": {
+    ".config": "<dir>",
+    ".config/<prog>": "<dir>",
+    ".config/app": "<dir>",
+    ".config/app/settings.ini": "[app]\ncolor = blue\n",
+    ".gnupg": "<dir>",
+    ".local": "<dir>",
+    ".local/share": "<dir>",
+    ".local/share/<prog>": "<dir>",
+    ".local/share/<prog>/repo.git": "<dir>",
+    ".ssh": "<dir>",
+    ".tmux.conf": "set -g mouse on\n",
+    ".vimrc": "set number\nset ruler\n",
+    ".zshrc": "setopt autocd\n"
+  },
+  "git": {
+    "core.bare": "false",
+    "core.worktree": "<TMP>/home",
+    "head": "6f858c944b070fb42585322d743311a7d9eda8f4",
+    "status": [],
+    "status.showUntrackedFiles": "no",
+    "tracked": [
+      ".config/app/settings.ini",
+      ".tmux.conf",
+      ".vimrc",
+      ".zshrc"
+    ],
+    "yadm.managed": "true"
+  },
+  "private_dir_modes": {
+    ".gnupg": "0o700",
+    ".ssh": "0o700"
+  },
+  "steps": [
+    {
+      "args": [
+        "run",
+        "clone",
+        "{tmp}/remote.git"
+      ],
+      "returncode": 0,
+      "stderr": "Cloning into 'repo.git'...\ndone.\n",
+      "stdout": ""
+    },
+    {
+      "args": [
+        "run",
+        "add",
+        ".vimrc",
+        ".zshrc"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "args": [
+        "run",
+        "commit",
+        "-q",
+        "-m",
+        "from home"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "args": [
+        "run",
+        "push"
+      ],
+      "returncode": 0,
+      "stderr": "To <TMP>/remote.git\n   ffb5b44..74961bc  main -> main\n",
+      "stdout": ""
+    },
+    {
+      "args": [
+        "inspect",
+        "--git-dir={tmp}/remote.git",
+        "log",
+        "--format=%H %s"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "74961bcf959fe995875011f491716351ec7af192 from home\nffb5b448eb49f2ceef0b8a35330628e2a80b670c seed\n"
+    },
+    {
+      "args": [
+        "run",
+        "pull"
+      ],
+      "returncode": 0,
+      "stderr": "From <TMP>/remote\n   74961bc..6f858c9  main       -> origin/main\n",
+      "stdout": "Updating 74961bc..6f858c9\nFast-forward\n .tmux.conf | 1 +\n 1 file changed, 1 insertion(+)\n create mode 100644 .tmux.conf\n"
+    },
+    {
+      "args": [
+        "run",
+        "log",
+        "--format=%H %s"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "6f858c944b070fb42585322d743311a7d9eda8f4 from other\n74961bcf959fe995875011f491716351ec7af192 from home\nffb5b448eb49f2ceef0b8a35330628e2a80b670c seed\n"
+    },
+    {
+      "args": [
+        "run",
+        "list"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": ".config/app/settings.ini\n.tmux.conf\n.vimrc\n.zshrc\n"
+    }
+  ]
+}

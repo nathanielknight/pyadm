@@ -1,0 +1,73 @@
+{
+  "files": {
+    "file.txt": "content\n"
+  },
+  "git": {
+    "core.bare": "false",
+    "core.worktree": "<TMP>/work",
+    "head": "e4a79f730795d81143cbbdc73ac3324f86a3374a",
+    "status": [],
+    "status.showUntrackedFiles": "no",
+    "tracked": [
+      "file.txt"
+    ],
+    "yadm.managed": "true"
+  },
+  "private_dir_modes": {},
+  "steps": [
+    {
+      "args": [
+        "run",
+        "init",
+        "-w",
+        "{tmp}/missing"
+      ],
+      "returncode": 1,
+      "stderr": "ERROR: Work tree does not exist: [<TMP>/missing]\n",
+      "stdout": ""
+    },
+    {
+      "args": [
+        "run",
+        "init",
+        "-w",
+        "{tmp}/work"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "Initialized empty shared Git repository in <TMP>/home/.local/share/<prog>/repo.git/\n"
+    },
+    {
+      "args": [
+        "run",
+        "add",
+        "{tmp}/work/file.txt"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "args": [
+        "run",
+        "commit",
+        "-q",
+        "-m",
+        "work"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "args": [
+        "run",
+        "list",
+        "-a"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "file.txt\n"
+    }
+  ]
+}

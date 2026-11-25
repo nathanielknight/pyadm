@@ -1,0 +1,32 @@
+{
+  "files": {
+    ".config": "<dir>",
+    ".config/<prog>": "<dir>",
+    ".local": "<dir>",
+    ".local/share": "<dir>",
+    ".local/share/<prog>": "<dir>"
+  },
+  "git": {},
+  "private_dir_modes": {},
+  "steps": [
+    {
+      "args": [
+        "run",
+        "clone",
+        "{tmp}/does-not-exist.git"
+      ],
+      "returncode": 1,
+      "stderr": "fatal: repository '<TMP>/does-not-exist.git' does not exist\nERROR: Unable to clone the repository\n",
+      "stdout": ""
+    },
+    {
+      "args": [
+        "run",
+        "list"
+      ],
+      "returncode": 1,
+      "stderr": "ERROR: Git repo does not exist. did you forget to run 'init' or 'clone'?\n",
+      "stdout": ""
+    }
+  ]
+}

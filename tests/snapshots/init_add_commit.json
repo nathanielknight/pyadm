@@ -1,0 +1,135 @@
+{
+  "files": {
+    ".bashrc": "export EDITOR=nano\n",
+    ".config": "<dir>",
+    ".config/<prog>": "<dir>",
+    ".config/app": "<dir>",
+    ".config/app/my settings.ini": "[app]\n",
+    ".gnupg": "<dir>",
+    ".local": "<dir>",
+    ".local/share": "<dir>",
+    ".local/share/<prog>": "<dir>",
+    ".local/share/<prog>/repo.git": "<dir>",
+    ".ssh": "<dir>",
+    "untracked.txt": "not tracked\n"
+  },
+  "git": {
+    "core.bare": "false",
+    "core.worktree": "<TMP>/home",
+    "head": "ba26b9afc88649cbf2c73f328b80e64330ad2039",
+    "status": [],
+    "status.showUntrackedFiles": "no",
+    "tracked": [
+      ".bashrc",
+      ".config/app/my settings.ini"
+    ],
+    "yadm.managed": "true"
+  },
+  "private_dir_modes": {
+    ".gnupg": "0o700",
+    ".ssh": "0o700"
+  },
+  "steps": [
+    {
+      "args": [
+        "run",
+        "init"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "Initialized empty shared Git repository in <TMP>/home/.local/share/<prog>/repo.git/\n"
+    },
+    {
+      "args": [
+        "run",
+        "add",
+        ".bashrc",
+        ".config/app/my settings.ini"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "args": [
+        "run",
+        "status",
+        "--short"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "A  .bashrc\nA  \".config/app/my settings.ini\"\n"
+    },
+    {
+      "args": [
+        "run",
+        "commit",
+        "-m",
+        "first commit"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "[main (root-commit) b38e01c] first commit\n 2 files changed, 2 insertions(+)\n create mode 100644 .bashrc\n create mode 100644 .config/app/my settings.ini\n"
+    },
+    {
+      "args": [
+        "run",
+        "list"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": ".bashrc\n.config/app/my settings.ini\n"
+    },
+    {
+      "args": [
+        "run",
+        "list",
+        "-a"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": ".bashrc\n.config/app/my settings.ini\n"
+    },
+    {
+      "args": [
+        "run",
+        "list"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "app/my settings.ini\n"
+    },
+    {
+      "args": [
+        "run",
+        "diff",
+        "--stat"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": " .bashrc | 2 +-\n 1 file changed, 1 insertion(+), 1 deletion(-)\n"
+    },
+    {
+      "args": [
+        "run",
+        "commit",
+        "-a",
+        "-m",
+        "second commit"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "[main ba26b9a] second commit\n 1 file changed, 1 insertion(+), 1 deletion(-)\n"
+    },
+    {
+      "args": [
+        "run",
+        "log",
+        "--format=%H %s"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "ba26b9afc88649cbf2c73f328b80e64330ad2039 second commit\nb38e01c66a7afd7aee1833a34384754fc5741c0a first commit\n"
+    }
+  ]
+}
