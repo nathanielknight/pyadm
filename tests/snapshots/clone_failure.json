@@ -11,13 +11,11 @@
   "steps": [
     {
       "args": [
-        "run",
+        "rc",
         "clone",
         "{tmp}/does-not-exist.git"
       ],
-      "returncode": 1,
-      "stderr": "fatal: repository '<TMP>/does-not-exist.git' does not exist\nERROR: Unable to clone the repository\n",
-      "stdout": ""
+      "returncode": 1
     },
     {
       "args": [

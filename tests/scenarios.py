@@ -147,7 +147,8 @@ SCENARIOS = {
     },
     "clone_failure": {
         "steps": [
-            ("run", ["clone", "{tmp}/does-not-exist.git"]),
+            # only the exit code: Git words this failure differently on Windows
+            ("rc", ["clone", "{tmp}/does-not-exist.git"]),
             ("run", ["list"]),
         ],
     },

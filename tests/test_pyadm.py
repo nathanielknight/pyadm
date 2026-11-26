@@ -51,3 +51,9 @@ def test_git_program_config(tmp_path):
     steps = run(tmp_path, ["config", "yadm.git-program", "no-such-git"], ["init"])
     assert steps[1]["returncode"] == 1
     assert "'no-such-git' cannot be located" in steps[1]["stderr"]
+
+
+def test_clone_failure_is_reported(tmp_path):
+    (step,) = run(tmp_path, ["clone", "{tmp}/does-not-exist.git"])
+    assert step["returncode"] == 1
+    assert step["stderr"].endswith("ERROR: Unable to clone the repository\n")
