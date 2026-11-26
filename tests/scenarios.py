@@ -139,7 +139,7 @@ SCENARIOS = {
         "work": "{tmp}/work",
         "steps": REMOTE
         + [
-            ("git", ["init", "-q", "{tmp}/work"]),
+            ("write", "{tmp}/work/untracked.txt", "already here\n"),
             ("run", ["clone", "--bare", "--no-checkout", "-w", "{tmp}/work", "{tmp}/remote.git"]),
             ("run", ["status", "--short"]),
             ("run", ["clone", "-f", "--no-bootstrap", "-b", "main", "{tmp}/remote.git"]),
